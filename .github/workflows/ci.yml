@@ -1,0 +1,26 @@
+name: C++ CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up C++ environment
+      run: sudo apt-get install g++
+
+    - name: Build C++ code
+      run: g++ -o main main.cpp
+
+    - name: Run the executable
+      run: ./main
